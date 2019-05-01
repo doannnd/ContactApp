@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.nguyendinhdoan.contactapp.R;
+import com.nguyendinhdoan.contactapp.model.Contact;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactFragment extends Fragment {
 
@@ -27,6 +33,8 @@ public class ContactFragment extends Fragment {
     private int appBarState;
     private AppBarLayout searchAppBar, viewContactAppBar;
     private EditText searchContactEditText;
+
+    private RecyclerView contactListRecyclerView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,6 +59,7 @@ public class ContactFragment extends Fragment {
         viewContactAppBar = view.findViewById(R.id.app_bar_view_contact);
         searchAppBar = view.findViewById(R.id.search_app_bar);
         searchContactEditText = view.findViewById(R.id.et_search_contacts);
+        contactListRecyclerView = view.findViewById(R.id.rv_contact_list);
 
         // navigate to add contacts fragment
         FloatingActionButton addContactFloatingActionButton = view.findViewById(R.id.fab_add_contact);
@@ -80,7 +89,27 @@ public class ContactFragment extends Fragment {
                 toogleToolbarState();
             }
         });
+
+        setupContactList();
         
+    }
+
+    private void setupContactList() {
+        Log.d(TAG, "setupContactList: started.");
+        contactListRecyclerView.setHasFixedSize(true);
+        contactListRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        // test contact list
+        List<Contact> contactList = new ArrayList<>();
+        contactList.add(new Contact("Kai", "0395616595", "android", "nguyendinhdoanjdk@gmail.com", "https://i.redd.it/tpsnoz5bzo501.jpg"));
+        contactList.add(new Contact("Kai", "0395616595", "android", "nguyendinhdoanjdk@gmail.com", "https://i.redd.it/tpsnoz5bzo501.jpg"));
+        contactList.add(new Contact("Kai", "0395616595", "android", "nguyendinhdoanjdk@gmail.com", "https://i.redd.it/tpsnoz5bzo501.jpg"));
+        contactList.add(new Contact("Kai", "0395616595", "android", "nguyendinhdoanjdk@gmail.com", "https://i.redd.it/tpsnoz5bzo501.jpg"));
+        contactList.add(new Contact("Kai", "0395616595", "android", "nguyendinhdoanjdk@gmail.com", "https://i.redd.it/tpsnoz5bzo501.jpg"));
+
+        // get contact adapter
+        ContactAdapter contactAdapter = new ContactAdapter(getActivity(), contactList);
+        contactListRecyclerView.setAdapter(contactAdapter);
     }
 
     /**

@@ -56,7 +56,6 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
         // load image
         Picasso.get()
                 .load(contactUrl)
-                .placeholder(R.drawable.ic_launcher_background)
                 .into(contactViewHolder.contactAvatarImageView, new Callback() {
                     @Override
                     public void onSuccess() {
