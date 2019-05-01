@@ -1,6 +1,5 @@
 package com.nguyendinhdoan.contactapp;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,9 +15,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-public class ViewContactFragment extends Fragment {
+public class ContactFragment extends Fragment {
 
-    private static final String TAG = ViewContactFragment.class.getSimpleName();
+    private static final String TAG = ContactFragment.class.getSimpleName();
 
     private static final int APP_BAR_STANDARD = 0;
     private static final int APP_BAR_SEARCH = 1;
@@ -38,7 +37,7 @@ public class ViewContactFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView: started.");
-        return inflater.inflate(R.layout.fragment_viewcontacts, container, false);
+        return inflater.inflate(R.layout.fragment_contacts, container, false);
     }
 
     @Override

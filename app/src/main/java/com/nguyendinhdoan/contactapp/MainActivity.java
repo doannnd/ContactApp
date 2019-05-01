@@ -19,15 +19,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Initialize the first fragment (ViewContactFragment)
+     * Initialize the first fragment (ContactFragment)
      */
     private void init() {
         Log.d(TAG, "init: started.");
 
-        ViewContactFragment viewContactFragment = new ViewContactFragment();
+        ContactFragment contactFragment = new ContactFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         // replace whatever is in the fragment_container view with this fragment
-        transaction.replace(R.id.fragment_container, viewContactFragment);
+        transaction.replace(R.id.fragment_container, contactFragment);
         // add a back stack so the user navigate back
         transaction.addToBackStack(null);
         transaction.commit();
