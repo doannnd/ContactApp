@@ -33,6 +33,9 @@ dependencies {
     // universal image loader
     implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 
+    // android picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
     // android circle image view
     implementation 'de.hdodenhof:circleimageview:3.0.0'
 }

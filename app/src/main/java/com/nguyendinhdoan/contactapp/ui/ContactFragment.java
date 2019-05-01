@@ -1,4 +1,4 @@
-package com.nguyendinhdoan.contactapp;
+package com.nguyendinhdoan.contactapp.ui;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+
+import com.nguyendinhdoan.contactapp.R;
 
 public class ContactFragment extends Fragment {
 
