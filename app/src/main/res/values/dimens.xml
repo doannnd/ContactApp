@@ -6,4 +6,5 @@
     <dimen name="elevation_medium">10dp</dimen>
     <dimen name="text_size_small">16sp</dimen>
     <dimen name="padding_standard">16dp</dimen>
+    <dimen name="margin_large">20dp</dimen>
 </resources>

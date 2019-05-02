@@ -14,7 +14,7 @@
             android:layout_height="wrap_content">
 
             <include layout="@layout/toolbar_search" />
-            <include layout="@layout/app_bar" />
+            <include layout="@layout/toolbar_main" />
 
         </RelativeLayout>
 

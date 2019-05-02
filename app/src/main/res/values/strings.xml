@@ -3,4 +3,6 @@
     <string name="search_icon">search icon</string>
     <string name="hint_search_contacts">search contacts</string>
     <string name="back_arrow_image">back arrow image</string>
+    <string name="edit_icon">edit icon</string>
+    <string name="delete_menu_title">delete</string>
 </resources>
