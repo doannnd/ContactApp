@@ -2,6 +2,8 @@ package com.nguyendinhdoan.contactapp.ui;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -72,6 +74,22 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
                 });
         // set contact name
         contactViewHolder.contactNameTextView.setText(contactName);
+
+        contactViewHolder.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Log.d(TAG, "onClick: clicked edit icon");
+                ContactDetailFragment contactDetailFragment = new ContactDetailFragment();
+                FragmentTransaction transaction =
+                        ((AppCompatActivity) context).getSupportFragmentManager().beginTransaction();
+                // replace whatever is in the fragment_container view with this fragment
+                transaction.replace(R.id.fragment_container, contactDetailFragment);
+                // add a back stack so the user navigate back
+                transaction.addToBackStack(context.getString(R.string.contact_detail_fragment));
+                Log.d(TAG, "onClick: fragment: " + context.getString(R.string.contact_detail_fragment));
+                transaction.commit();
+            }
+        });
     }
 
     @Override
@@ -85,12 +103,29 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
         private TextView contactNameTextView;
         private ProgressBar loadingProgressBar;
 
+        private OnItemClickListener onItemClickListener;
+
+        public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+            this.onItemClickListener =  onItemClickListener;
+        }
+
         public ContactViewHolder(@NonNull View itemView) {
             super(itemView);
 
             contactAvatarImageView = itemView.findViewById(R.id.iv_contact_avatar);
             contactNameTextView = itemView.findViewById(R.id.tv_contact_name);
             loadingProgressBar = itemView.findViewById(R.id.pb_loading);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onItemClickListener.onItemClick(getAdapterPosition());
+                }
+            });
         }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
     }
 }
