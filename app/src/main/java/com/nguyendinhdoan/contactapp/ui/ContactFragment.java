@@ -103,10 +103,10 @@ public class ContactFragment extends Fragment {
         // test contact list
         List<Contact> contactList = new ArrayList<>();
         contactList.add(new Contact("Kai", "0395616595", "android", "nguyendinhdoanjdk@gmail.com", "https://i.redd.it/tpsnoz5bzo501.jpg"));
-        contactList.add(new Contact("Kai", "0395616595", "android", "nguyendinhdoanjdk@gmail.com", "https://i.redd.it/tpsnoz5bzo501.jpg"));
-        contactList.add(new Contact("Kai", "0395616595", "android", "nguyendinhdoanjdk@gmail.com", "https://i.redd.it/tpsnoz5bzo501.jpg"));
-        contactList.add(new Contact("Kai", "0395616595", "android", "nguyendinhdoanjdk@gmail.com", "https://i.redd.it/tpsnoz5bzo501.jpg"));
-        contactList.add(new Contact("Kai", "0395616595", "android", "nguyendinhdoanjdk@gmail.com", "https://i.redd.it/tpsnoz5bzo501.jpg"));
+        contactList.add(new Contact("Kudo", "0395616595", "android", "nguyendinhdoanjdk@gmail.com", "https://i.redd.it/tpsnoz5bzo501.jpg"));
+        contactList.add(new Contact("Kenz", "0395616595", "android", "nguyendinhdoanjdk@gmail.com", "https://i.redd.it/tpsnoz5bzo501.jpg"));
+        contactList.add(new Contact("Conan", "0395616595", "android", "nguyendinhdoanjdk@gmail.com", "https://i.redd.it/tpsnoz5bzo501.jpg"));
+        contactList.add(new Contact("Mori", "0395616595", "android", "nguyendinhdoanjdk@gmail.com", "https://i.redd.it/tpsnoz5bzo501.jpg"));
 
         // get contact adapter
         ContactAdapter contactAdapter = new ContactAdapter(getActivity(), contactList);

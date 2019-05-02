@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.nguyendinhdoan.contactapp.R;
+import com.nguyendinhdoan.contactapp.model.Contact;
 
 public class ContactDetailFragment extends Fragment {
 
@@ -24,6 +25,26 @@ public class ContactDetailFragment extends Fragment {
             ContactDetailFragment.class.getSimpleName();
 
     private Toolbar toolbar;
+    Contact contact;
+
+    public static ContactDetailFragment newInstance(Contact contact) {
+        ContactDetailFragment fragment = new ContactDetailFragment();
+        Bundle args = new Bundle();
+        args.putParcelable("contact", contact);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate: started.");
+        if (getArguments() != null) {
+           contact  = getArguments().getParcelable("contact");
+            Log.d(TAG, "onCreate: contact name: " + contact.getName());
+        }
+    }
+
 
     @Nullable
     @Override
@@ -37,8 +58,8 @@ public class ContactDetailFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         /*
-        * setup toolbar for contact detail fragment
-        * */
+         * setup toolbar for contact detail fragment
+         * */
         toolbar = view.findViewById(R.id.toolbar_detail);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         setHasOptionsMenu(true);
@@ -59,22 +80,13 @@ public class ContactDetailFragment extends Fragment {
         });
 
         /*
-        * show the contact detail fragment selected in contact list view
-        * */
+         * show the contact detail fragment selected in contact list view
+         * */
         ImageView editImageView = view.findViewById(R.id.iv_edit);
         editImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: clicked edit icon");
-                ContactDetailFragment contactDetailFragment = new ContactDetailFragment();
-                FragmentTransaction transaction =
-                        getActivity().getSupportFragmentManager().beginTransaction();
-                // replace whatever is in the fragment_container view with this fragment
-                transaction.replace(R.id.fragment_container, contactDetailFragment);
-                // add a back stack so the user navigate back
-                transaction.addToBackStack(getString(R.string.contact_detail_fragment));
-                Log.d(TAG, "onClick: fragment: " + getString(R.string.contact_detail_fragment));
-                transaction.commit();
             }
         });
     }

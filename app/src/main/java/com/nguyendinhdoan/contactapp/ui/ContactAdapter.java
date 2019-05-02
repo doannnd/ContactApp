@@ -44,7 +44,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
     @Override
     public void onBindViewHolder(@NonNull final ContactViewHolder contactViewHolder, int position) {
         Log.d(TAG, "onBindViewHolder: started.");
-        Contact contact = contactList.get(position);
+        final Contact contact = contactList.get(position);
 
         // get data from contact model
         String contactName = contact.getName();
@@ -79,18 +79,15 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
             @Override
             public void onItemClick(int position) {
                 Log.d(TAG, "onClick: clicked edit icon");
-                ContactDetailFragment contactDetailFragment = new ContactDetailFragment();
-                FragmentTransaction transaction =
-                        ((AppCompatActivity) context).getSupportFragmentManager().beginTransaction();
-                // replace whatever is in the fragment_container view with this fragment
-                transaction.replace(R.id.fragment_container, contactDetailFragment);
-                // add a back stack so the user navigate back
+                ContactDetailFragment fragment = ContactDetailFragment.newInstance(contact);
+                FragmentTransaction transaction = ((AppCompatActivity) context).getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container, fragment);
                 transaction.addToBackStack(context.getString(R.string.contact_detail_fragment));
-                Log.d(TAG, "onClick: fragment: " + context.getString(R.string.contact_detail_fragment));
                 transaction.commit();
             }
         });
     }
+
 
     @Override
     public int getItemCount() {
